@@ -25,6 +25,14 @@
     <name>OpenEJB :: Web Examples :: Struts</name>
     <url>http://tomee.apache.org</url>
 
+    <!-- Inherit defaults from Spring Boot -->
+    <!-- For Spring Bootification -->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.5.5.RELEASE</version>
+    </parent>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
@@ -42,9 +50,57 @@
 
     <build>
         <finalName>struts</finalName>
+        <!-- For Spring Bootification -->
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>1.5.5.RELEASE</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
     </build>
 
     <dependencies>
+        <!-- For Spring Bootification -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>1.5.4.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+            <version>1.5.4.RELEASE</version>
+        </dependency><dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <version>1.5.4.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-jasper</artifactId>
+            <version>8.5.16</version>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>6.0.6</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.struts</groupId>
+            <artifactId>struts2-spring-plugin</artifactId>
+            <version>2.1.8.1</version>
+        </dependency>
+
+
+
         <dependency>
             <groupId>org.apache.tomee</groupId>
             <artifactId>javaee-api</artifactId>
@@ -62,11 +118,11 @@
             <version>1.1.2</version>
         </dependency>
 
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.13</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>mysql</groupId>-->
+            <!--<artifactId>mysql-connector-java</artifactId>-->
+            <!--<version>5.1.13</version>-->
+        <!--</dependency>-->
 
         <dependency>
             <groupId>org.apache.struts</groupId>
